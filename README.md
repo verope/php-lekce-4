@@ -1,4 +1,4 @@
-# Kurz PHP - lekce 3
+# Kurz PHP - lekce 4
 
 * Práce se soubory
 * Funkce
