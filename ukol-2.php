@@ -11,23 +11,47 @@
 </head>
 <body>
 <br>
+<?php
+/*
+ * 
+Vypracujte doma: Úkol 2
+1. Upravte soubor `ukol-2.php` tak, aby se data do tabulky načítala z souboru `objednavky.csv`
+2. Soubor `objednavky.csv` obsahuje data o objednávkách
+  1. Každý řádek reprezentuje jednu objednávku
+  2. V sloupcích jsou uvedené číslo objednávky, celková cena, datum vytvoření a jméno zákazníka
+  3. Jako oddělovač sloupců je použit středník `;`
+3. Vypište data ze souboru do připravené tabulky tak, aby jednotlivé sloupce odpovídaly připravené hlavičce
+ */
+?>
+
+
+
+
 <div class="container">
     <h1>Seznam objednávek</h1>
     <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Číslo objednávky</th>
-                <th>Jméno zákazníka</th>
-                <th>Datum vytvoření objednávky</th>
                 <th>Celková cena</th>
+                <th>Datum vytvoření objednávky</th>
+                <th>Jméno zákazníka</th>
             </tr>
         </thead>
-        <tr>
-            <td>123</td>
-            <td>Josef</td>
-            <td>1.1.2000</td>
-            <td>0 Kč</td>
-        </tr>
+        <?php
+        $handle = fopen('objednavky.csv', 'r');
+        
+        while(($line = fgets($handle, 4096)) == !FALSE){
+        echo '<tr>';
+            $row = explode(';',$line);
+            foreach ($row as $value){
+                echo '<td>' . $value . '</td>';
+            } 
+        }
+        echo '</tr>';
+        ?>
+        
+
     </table>
 </div>
 </body>
